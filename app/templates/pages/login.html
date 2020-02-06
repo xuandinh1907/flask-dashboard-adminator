@@ -20,7 +20,11 @@
         {% if msg %}
             <h4 class="fw-300 c-grey-900 mB-40">{{ msg | safe }}</h4>
         {% else %}
-            <h4 class="fw-300 c-grey-900 mB-40">Login</h4>
+            <p class="fw-300 c-grey-900 mB-40">
+              Use default credentials: test / pass
+              <br />
+              OR <a href="/register.html" >create your own user</a>              
+            </p>
         {% endif %}
 
         <form method="post" action="">
