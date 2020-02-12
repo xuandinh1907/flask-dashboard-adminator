@@ -23,7 +23,9 @@
         {% if msg %}
             <h4 class="fw-300 c-grey-900 mB-40">{{ msg | safe }}</h4>
         {% else %}
-            <h4 class="fw-300 c-grey-900 mB-40">Register</h4>
+            <p class="fw-300 c-grey-900 mB-40">
+              Add your credentials OR <a href="/login.html" >authenticate</a> using an existing account             
+            </p>
         {% endif %}
 
         <form method="post" action="">
