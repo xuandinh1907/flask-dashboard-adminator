@@ -130,3 +130,61 @@ def index(path):
         
         return render_template('layouts/auth-default.html',
                                 content=render_template( 'pages/404.html' ) )
+
+import tensorflow as tf
+import requests
+import json
+from flask import jsonify
+from flask import request
+from .models import model , tokenizer
+
+# DARKSKY_API_KEY = "957b613114c572a38a1db3d0c7e7bb49"
+
+# @app.route('/get_data_api.html', methods=['GET'])
+# def get_data_api():
+#     lat = request.args.get('lat')
+#     lon = request.args.get('lon')
+#     our_request = 'https://api.darksky.net/forecast/{}/{},{}'.format(DARKSKY_API_KEY,lat,lon)
+#     print("Request: ",our_request)
+#     res = requests.get(our_request)  
+#     print("Result: ",res.json())
+
+#     return jsonify(res.json())
+
+
+
+@app.route('/qa_processing', methods=['POST','GET'])
+def get_data_api():
+
+    data = json.loads(request.data)
+    paragraph = data.get("para",None)
+    questions = data.get("ques",None)
+    # paragraph="Do you know what is the difference between you and stars ? \nThe stars are on the sky and you are in my heart !"
+    # questions=["what is the difference between you and stars"]
+    print(paragraph)
+    print(questions)
+    print(type(paragraph))
+    print(type(questions))
+    qa = {}
+    questions = questions.strip().split("\n")
+    for question in questions:
+        question_tokens = tokenizer.tokenize(question)
+        paragraph_tokens = tokenizer.tokenize(paragraph)
+        tokens = ['[CLS]'] + question_tokens + ['[SEP]'] + paragraph_tokens + ['[SEP]']
+        input_word_ids = tokenizer.convert_tokens_to_ids(tokens)
+        input_mask = [1] * len(input_word_ids)
+        input_type_ids = [0] * (1 + len(question_tokens) + 1) + [1] * (len(paragraph_tokens) + 1)
+
+        input_word_ids, input_mask, input_type_ids = map(lambda t: tf.expand_dims(
+            tf.convert_to_tensor(t, dtype=tf.int32), 0), (input_word_ids, input_mask, input_type_ids))
+        outputs = model([input_word_ids, input_mask, input_type_ids])
+        # using `[1:]` will enforce an answer. `outputs[:][0][0]` is the ignored '[CLS]' token logit.
+        short_start = tf.argmax(outputs[0][0][1:]) + 1
+        short_end = tf.argmax(outputs[1][0][1:]) + 1
+        answer_tokens = tokens[short_start: short_end + 1]
+        answer = tokenizer.convert_tokens_to_string(answer_tokens)
+        qa[question] = answer
+        
+    print(qa)
+    # return {"Test":"Test"}
+    return jsonify(qa)

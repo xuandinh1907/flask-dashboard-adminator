@@ -16,6 +16,9 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 app = Flask(__name__)
 
+# Disable cache
+app.config['TEMPLATES_AUTO_RELOAD'] = True
+
 app.config.from_object('app.configuration.Config')
 
 db = SQLAlchemy  (app) # flask-sqlalchemy
