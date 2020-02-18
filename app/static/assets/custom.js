@@ -65,6 +65,14 @@ window.addEventListener('load', function () {
                 return response.json();
             }).then(function(data) {
                 console.log(data);
+                answer_text= "";
+                var keys = Object.keys(data);
+                for(var i=0; i<keys.length; i++){
+                    var key = keys[i];
+                    answer_text += "Question: "+key +"\nAnswer: "+data[key]+"\n";
+                    console.log(key, data[key]);
+                }
+                document.getElementById("input_answer").value = answer_text;
             });
         });
     }
