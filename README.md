@@ -9,6 +9,15 @@
 
 <br />
 
+## Dashboard Links
+
+- [Flask Dashboard Adminator](https://appseed.us/admin-dashboards/flask-dashboard-adminator) - the product page
+- [Flask Dashboard Adminator](https://flask-dashboard-adminator.appseed.us/login.html) - LIVE Demo
+- [Flask Dashboard Adminator](https://docs.appseed.us/admin-dashboards/flask-dashboard-adminator/) - documentation
+- [Flask Dashboard Adminator](https://www.youtube.com/watch?v=TZh91sXGAKg) - yTube presentation
+
+<br />
+
 ## Want more? Go PRO!
 
 PRO versions include **Premium UI Kits**, Lifetime updates and **24/7 LIVE Support** (via [Discord](https://discord.gg/fZC6hup))
