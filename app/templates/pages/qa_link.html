@@ -1,0 +1,34 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+<div class="masonry-item col-md-12">
+    <div class="bgc-white p-20 bd">
+        <h6 class="c-grey-900">Question & Answer Form</h6>
+        <div class="mT-30">
+        <form>
+            <div class="form-group row">
+                <label for="exampleInputEmail1">Wikipedia link</label>
+                <input type="wiki-link" class="form-control" id="wiki-link" aria-describedby="emailHelp" placeholder="Enter wikipedia link">
+            </div>
+            <div class="form-group row">
+            <label for="input_question" class="col-sm-2 col-form-label">Questions</label>
+            <div class="col-sm-10">
+                <textarea class="form-control" id="input_question" placeholder="Questions"  rows="5" > </textarea>
+            </div>
+            </div>
+            <div class="form-group row">
+            <label for="input_answer" class="col-sm-2 col-form-label">Answers</label>
+            <div class="col-sm-10">
+                <textarea class="form-control" id="input_answer" placeholder="Answers"  rows="10" > </textarea>
+            </div>
+            </div>
+            <div class="form-group row">
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary qa_link_submit">Find Answers</button>
+            </div>
+            </div>
+        </form>
+        </div>
+    </div>
+    </div>
+{% endblock content %}

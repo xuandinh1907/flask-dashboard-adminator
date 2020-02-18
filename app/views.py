@@ -16,6 +16,14 @@ from werkzeug.exceptions import HTTPException, NotFound, abort
 from app        import app, lm, db, bc
 from app.models import User
 from app.forms  import LoginForm, RegisterForm
+from .convert_to_crops import *
+
+import tensorflow as tf
+import requests
+import json
+from flask import jsonify
+from flask import request
+from .models import model , tokenizer
 
 # provide login manager with load_user callback
 @lm.user_loader
@@ -131,27 +139,6 @@ def index(path):
         return render_template('layouts/auth-default.html',
                                 content=render_template( 'pages/404.html' ) )
 
-import tensorflow as tf
-import requests
-import json
-from flask import jsonify
-from flask import request
-from .models import model , tokenizer
-
-# DARKSKY_API_KEY = "957b613114c572a38a1db3d0c7e7bb49"
-
-# @app.route('/get_data_api.html', methods=['GET'])
-# def get_data_api():
-#     lat = request.args.get('lat')
-#     lon = request.args.get('lon')
-#     our_request = 'https://api.darksky.net/forecast/{}/{},{}'.format(DARKSKY_API_KEY,lat,lon)
-#     print("Request: ",our_request)
-#     res = requests.get(our_request)  
-#     print("Result: ",res.json())
-
-#     return jsonify(res.json())
-
-
 
 @app.route('/qa_processing', methods=['POST','GET'])
 def get_data_api():
@@ -188,3 +175,20 @@ def get_data_api():
     print(qa)
     # return {"Test":"Test"}
     return jsonify(qa)
+
+@app.route('/qa_link_processing', methods=['POST','GET'])
+def get_data_link_api():
+
+    data = json.loads(request.data)
+    link = data.get("wiki",None)
+    questions = data.get("ques",None)
+    # paragraph="Do you know what is the difference between you and stars ? \nThe stars are on the sky and you are in my heart !"
+    # questions=["what is the difference between you and stars"]
+    questions = questions.strip().split("\n")
+    print(link)
+    print(questions)
+    print(type(link))
+    print(type(questions))
+    my_squad = demo(link,questions)
+    return my_squad
+    #return jsonify(qa)
