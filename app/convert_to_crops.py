@@ -327,12 +327,13 @@ def get_document_text(url) :
     html = bs4.BeautifulSoup(response.text, 'html.parser')
 
     paragraphs = html.select("p")
-    document_text = '\n'.join([ para.text for para in paragraphs[0:10]])
+    document_text = '\n'.join([ para.text for para in paragraphs)
     return document_text,len(paragraphs)
 
-squad = collections.defaultdict(list)
+
 
 def demo(url,questions) :
+    squad = collections.defaultdict(list)
     document_text,my_length = get_document_text(url)
     # print(document_text)
     doc_tokens = get_doc_tokens(document_text)

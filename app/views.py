@@ -190,5 +190,5 @@ def get_data_link_api():
     print(type(link))
     print(type(questions))
     my_squad = demo(link,questions)
-    return my_squad
+    return jsonify(my_squad)
     #return jsonify(qa)
