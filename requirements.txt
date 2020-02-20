@@ -5,6 +5,5 @@ flask_wtf
 flask_sqlalchemy
 flask_bcrypt
 gunicorn
-tensorflow==2.0
 transformers
 bs4
