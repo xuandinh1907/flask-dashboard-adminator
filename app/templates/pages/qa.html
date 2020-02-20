@@ -2,6 +2,7 @@
 
 {% block content %}
 <h1>Just copy & past your parapgraph</h1>
+<div class="loader">Loading...</div>
 <div class="masonry-item col-md-12">
     <div class="bgc-white p-20 bd">
         <h2 class="c-grey-900">Note that sum of tokens of query and paragraph shoud not greater than 509!</h2>
@@ -27,8 +28,12 @@
             </div>
             <div class="form-group row">
             <div class="col-sm-10">
-                <button type="submit" class="btn btn-primary qa_submit">Find Answers</button>
+                <button type="submit" id="find-answers" class="btn btn-primary qa_submit">Find Answers</button>
             </div>
+            <div class="d-flex align-items-center">
+                <strong>Loading...</strong>
+                <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
+              </div>
             </div>
         </form>
         </div>

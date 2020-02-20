@@ -13,7 +13,8 @@
 //             console.log (question_val);
 //             console.log (answer_val);
 //             var asking_obj ={"para":paragraph_val, "ques":question_val}
-        
+//             var loader = document.getElementsByClassName("loader")[0];
+//             loader.style.display = "block";
     
 //             fetch('http://127.0.0.1:5000/qa_processing', {
 //                 method: 'post',
@@ -25,6 +26,8 @@
 //                 return response.json();
 //             }).then(function(data) {
 //                 console.log(data);
+//                 var loader = document.getElementsByClassName("loader")[0];
+//                 loader.style.display = "none";
 //                 answer_text= "";
 //                 var keys = Object.keys(data);
 //                 for(var i=0; i<keys.length; i++){
@@ -53,7 +56,8 @@
 //             console.log (question_val);
 //             console.log (answer_val);
 //             var asking_obj ={"wiki":wiki_val, "ques":question_val}
-        
+//             var loader = document.getElementsByClassName("loader")[0];
+//             loader.style.display = "block";
     
 //             fetch('http://127.0.0.1:5000/qa_link_processing', {
 //                 method: 'post',
@@ -65,6 +69,8 @@
 //                 return response.json();
 //             }).then(function(data) {
 //                 console.log(data);
+//                 var loader = document.getElementsByClassName("loader")[0];
+//                 loader.style.display = "none";
 //                 answer_text= "";
 //                 var keys = Object.keys(data);
 //                 answer_text += keys[0] +" "+data[keys[0]]+
@@ -103,6 +109,8 @@ window.addEventListener('load', function () {
             console.log (question_val);
             console.log (answer_val);
             var asking_obj ={"para":paragraph_val, "ques":question_val}
+            var loader = document.getElementsByClassName("loader")[0];
+            loader.style.display = "block";
         
     
             fetch('http://34.80.65.17:5000/qa_processing', {
@@ -115,6 +123,8 @@ window.addEventListener('load', function () {
                 return response.json();
             }).then(function(data) {
                 console.log(data);
+                var loader = document.getElementsByClassName("loader")[0];
+                loader.style.display = "none";
                 answer_text= "";
                 var keys = Object.keys(data);
                 for(var i=0; i<keys.length; i++){
@@ -143,6 +153,8 @@ window.addEventListener('load', function () {
             console.log (question_val);
             console.log (answer_val);
             var asking_obj ={"wiki":wiki_val, "ques":question_val};
+            var loader = document.getElementsByClassName("loader")[0];
+            loader.style.display = "block";
         
     
             fetch('http://34.80.65.17:5000/qa_link_processing', {
@@ -155,6 +167,8 @@ window.addEventListener('load', function () {
                 return response.json();
             }).then(function(data) {
                 console.log(data);
+                var loader = document.getElementsByClassName("loader")[0];
+                loader.style.display = "none";
                 answer_text= "";
                 var keys = Object.keys(data);
                 answer_text += keys[0] +" "+data[keys[0]]+
@@ -179,7 +193,7 @@ window.addEventListener('load', function () {
 });
 
 
-
+// document.getElementById().style.visibility = "visible";
 // export IMAGE_FAMILY="tf2-latest-gpu"
 // export ZONE="asia-east1-c"
 // export INSTANCE_NAME="natural-questions-answering"
