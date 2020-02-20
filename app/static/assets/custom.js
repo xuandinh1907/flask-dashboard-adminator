@@ -32,7 +32,7 @@
 //                 var keys = Object.keys(data);
 //                 for(var i=0; i<keys.length; i++){
 //                     var key = keys[i];
-//                     answer_text += "Question: "+key +"\nAnswer: "+data[key]+"\n";
+//                     answer_text += "Q : "+key +"\nA : "+data[key].toUpperCase()+"\n";
 //                     console.log(key, data[key]);
 //                 }
 //                 document.getElementById("input_answer").value = answer_text;
@@ -73,12 +73,10 @@
 //                 loader.style.display = "none";
 //                 answer_text= "";
 //                 var keys = Object.keys(data);
-//                 answer_text += keys[0] +" "+data[keys[0]]+
-//                 "\n"+"-------------------------------------------"+"\n"
 //                 for(var i=1; i<keys.length; i++){
 //                     var key = keys[i];
-//                     answer_text += "Question : "+key +
-//                     "\nAnswer : "+data[key][0]+
+//                     answer_text += "Q : "+key +
+//                     "\nA : "+data[key][0].toUpperCase()+
 //                     "\n"+data[key][1]+
 //                     "\n"+"-------------------------------------------"+
 //                     "\n";
@@ -129,7 +127,7 @@ window.addEventListener('load', function () {
                 var keys = Object.keys(data);
                 for(var i=0; i<keys.length; i++){
                     var key = keys[i];
-                    answer_text += "Question: "+key +"\nAnswer: "+data[key]+"\n";
+                    answer_text += "Q : "+key +"\nA : "+data[key].toUpperCase()+"\n";
                     console.log(key, data[key]);
                 }
                 document.getElementById("input_answer").value = answer_text;
@@ -171,12 +169,10 @@ window.addEventListener('load', function () {
                 loader.style.display = "none";
                 answer_text= "";
                 var keys = Object.keys(data);
-                answer_text += keys[0] +" "+data[keys[0]]+
-                "\n"+"-------------------------------------------"+"\n"
                 for(var i=1; i<keys.length; i++){
                     var key = keys[i];
-                    answer_text += "Question : "+key +
-                    "\nAnswer : "+data[key][0]+
+                    answer_text += "Q : "+key +
+                    "\nA : "+data[key][0].toUpperCase()+
                     "\n"+data[key][1]+
                     "\n"+"-------------------------------------------"+
                     "\n";
