@@ -86,7 +86,7 @@
 
 
 
-// });
+});
 
 window.addEventListener('load', function () {
 
@@ -105,7 +105,7 @@ window.addEventListener('load', function () {
             var asking_obj ={"para":paragraph_val, "ques":question_val}
         
     
-            fetch('http://107.167.178.166:5000/qa_processing', {
+            fetch('http://34.80.65.17:5000/qa_processing', {
                 method: 'post',
                 headers: {
                     'Content-Type': 'application/json'
@@ -145,7 +145,7 @@ window.addEventListener('load', function () {
             var asking_obj ={"wiki":wiki_val, "ques":question_val};
         
     
-            fetch('http://107.167.178.166:5000/qa_link_processing', {
+            fetch('http://34.80.65.17:5000/qa_link_processing', {
                 method: 'post',
                 headers: {
                     'Content-Type': 'application/json'
@@ -180,3 +180,17 @@ window.addEventListener('load', function () {
 
 
 
+// export IMAGE_FAMILY="tf2-latest-gpu"
+// export ZONE="asia-east1-c"
+// export INSTANCE_NAME="natural-questions-answering"
+  
+// gcloud compute instances create $INSTANCE_NAME \
+//   --zone=$ZONE \
+//   --image-family=$IMAGE_FAMILY \
+//   --image-project=deeplearning-platform-release \
+//   --maintenance-policy=TERMINATE \
+//   --accelerator="type=nvidia-tesla-v100,count=1" \
+//   --metadata="install-nvidia-driver=True" \
+//   --boot-disk-size=200GB \
+//   --machine-type=n1-highmem-8 \
+//   --tags=[http-server,https-server]
