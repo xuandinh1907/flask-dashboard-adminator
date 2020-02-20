@@ -327,7 +327,7 @@ def get_document_text(url) :
     html = bs4.BeautifulSoup(response.text, 'html.parser')
 
     paragraphs = html.select("p")
-    document_text = '\n'.join([ para.text for para in paragraphs])
+    document_text = '\n'.join([ para.text for para in paragraphs[0:10]])
     return document_text,len(paragraphs)
 
 

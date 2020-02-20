@@ -142,8 +142,8 @@ def index(path):
 
 @app.route('/qa_processing', methods=['POST','GET'])
 def get_data_api():
-
-    data = json.loads(request.data)
+    print(type(request.data.decode('utf-8')))
+    data = json.loads(request.data.decode('utf-8'))
     paragraph = data.get("para",None)
     questions = data.get("ques",None)
     # paragraph="Do you know what is the difference between you and stars ? \nThe stars are on the sky and you are in my heart !"
@@ -178,8 +178,9 @@ def get_data_api():
 
 @app.route('/qa_link_processing', methods=['POST','GET'])
 def get_data_link_api():
-
-    data = json.loads(request.data)
+    print(request.data.decode('utf-8'))
+    print(type(request.data))
+    data = json.loads(request.data.decode('utf-8'))
     link = data.get("wiki",None)
     questions = data.get("ques",None)
     # paragraph="Do you know what is the difference between you and stars ? \nThe stars are on the sky and you are in my heart !"

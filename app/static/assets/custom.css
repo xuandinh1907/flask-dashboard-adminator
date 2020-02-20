@@ -10,7 +10,7 @@ h1 {
 }
 
 h2 {
-    margin-left: 10em;
+    margin-left: 8em;
 }
 
 label {
@@ -18,7 +18,7 @@ label {
 }
 
 textarea {
-    font-size: 100px;
+    font-size: 2em !important;
 }
 
 button {
