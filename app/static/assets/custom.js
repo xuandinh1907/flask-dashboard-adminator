@@ -32,8 +32,8 @@
 //                 var keys = Object.keys(data);
 //                 for(var i=0; i<keys.length; i++){
 //                     var key = keys[i];
-//                     answer_text += "Q : "+key +"\nA : "+data[key].toUpperCase()+"\n"
-//                     +"-------------------------------------------"+"\n";
+//                     answer_text += "Q : "+key +"\nA : "+data[key].toUpperCase()
+//                     +"\n";
 //                     console.log(key, data[key]);
 //                 }
 //                 document.getElementById("input_answer").value = answer_text;
@@ -79,7 +79,6 @@
 //                     answer_text += "Q : "+key +
 //                     "\nA : "+data[key][0].toUpperCase()+
 //                     "\n"+data[key][1]+
-//                     "\n"+"-------------------------------------------"+
 //                     "\n";
 //                     console.log(key, data[key]);
 //                 }
@@ -128,8 +127,7 @@ window.addEventListener('load', function () {
                 var keys = Object.keys(data);
                 for(var i=0; i<keys.length; i++){
                     var key = keys[i];
-                    answer_text += "Q : "+key +"\nA : "+data[key].toUpperCase()+"\n"
-                    "-------------------------------------------"+"\n";
+                    answer_text += "Q : "+key +"\nA : "+data[key].toUpperCase()+"\n";
                     console.log(key, data[key]);
                 }
                 document.getElementById("input_answer").value = answer_text;
@@ -176,7 +174,6 @@ window.addEventListener('load', function () {
                     answer_text += "Q : "+key +
                     "\nA : "+data[key][0].toUpperCase()+
                     "\n"+data[key][1]+
-                    "\n"+"-------------------------------------------"+
                     "\n";
                     console.log(key, data[key]);
                 }

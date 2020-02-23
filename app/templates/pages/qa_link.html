@@ -1,11 +1,53 @@
 {% extends "layouts/base.html" %}
 
 {% block content %}
-<h1>Tiểu Google</h1>
+
+<div class="container">
+    <div class="loader">Loading...</div>
+    <div class="row">
+        <div class="col text-center">
+            <h1>Little Google</h1>
+        </div>
+    </div>
+    <div class="row bgc-white p-20 bd">
+        <div class="col">
+            <div class="row">
+                <div class="col col-form col-wiki">
+                    <input type="wiki-link" class="form-control" id="wiki-link" aria-describedby="emailHelp" placeholder="Enter wikipedia link">    
+                </div>
+
+            </div>
+
+            <div class="row mt-3">
+                <div class="col col-form">
+                            <label for="input_question">Questions</label>
+                            <textarea class="form-control" id="input_question" placeholder="Put your questions here"  rows="10" > </textarea>
+                </div>
+
+                <div class="col col-form">
+                            <label for="input_answer">Answers</label>
+                            <textarea class="form-control" id="input_link_answer" placeholder="Answers"  rows="10" > </textarea>
+
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col col-btn">
+                    <button type="submit" class="btn btn-primary qa_link_submit">Find Answers</button>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+<!-- 
+<h1>Little Google</h1>
 <div class="loader">Loading...</div>
 <div class="masonry-item col-md-12">
     <div class="bgc-white p-20 bd">
-        <!-- <h2 class="c-grey-900">đọc báo giùm bạn :)</h2> -->
         <div class="mT-30">
         <form>
             <div class="form-group row">
@@ -30,11 +72,9 @@
             </div>
             
             </div>
-            <!-- <div class="form-group row">
-                
-            </div> -->
+
         </form>
         </div>
     </div>
-    </div>
+    </div> -->
 {% endblock content %}

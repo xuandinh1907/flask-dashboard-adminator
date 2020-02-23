@@ -4,19 +4,6 @@
     margin-left: 8px;
 }
 
-h1 {
-    color: red;
-    margin-left: 15em;
-}
-
-h2 {
-    margin-left: 8em;
-}
-
-label {
-    font-size: 30px;
-}
-
 textarea {
     font-size: 1.5em !important;
 }
@@ -111,3 +98,36 @@ button {
     }
   }
   
+
+.text-center{
+  text-align: center;
+}
+
+.col-form label{
+  font-size: 20px;
+}
+
+.col-btn{
+  text-align: right;
+}
+
+.col-btn button{
+  font-size: 18px;
+}
+
+.h1 {
+  font-size: 72px !important;
+}
+
+.col-wiki input{
+  width: 60%;
+  margin: auto;
+}
+.qa_link_submit{
+  float: left;
+}
+
+#wiki-link{
+  font-size:20px;
+}
+
