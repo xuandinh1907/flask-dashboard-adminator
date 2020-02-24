@@ -401,9 +401,11 @@ def demo_no_link(document_text,questions) :
         text = list(map(lambda x: x.replace('\n',''), document_text.split('\n\n')))
         # print(text)
         for i, line in enumerate(text):
-            regex_line = re.sub('[^a-zA-Z0-9 ]','', line).strip()
-            print(regex_line)
-            if short_best_non_null in regex_line.lower():
+            
+            regex_line = re.sub('[^a-zA-Z0-9 ]','', line).strip().lower()
+            if short_best_non_null in regex_line:
+                
+                print(regex_line)
                 squad[question].append(line)
         squad[question].append("Finding answer time "+str(round(time.time() - tic,1))+" s")
     
