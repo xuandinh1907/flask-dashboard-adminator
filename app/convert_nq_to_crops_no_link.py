@@ -398,7 +398,7 @@ def demo_no_link(document_text,questions) :
         document_text_split = document_text.split("\n\n")
         print(document_text_split)
         for sentence in document_text_split :
-            if short_best_non_null in sentence :
+            if short_best_non_null.lower() in sentence.lower() :
                 print(sentence)
                 squad[question].append(sentence)
         squad[question].append("Finding answer time "+str(round(time.time() - tic,1))+" s")
