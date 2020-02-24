@@ -330,7 +330,7 @@ def demo_no_link(document_text,questions) :
     # document_text = get_document_text(url)
     # print(document_text)
     doc_tokens = get_doc_tokens(document_text)
-    print(doc_tokens)
+    # print(doc_tokens)
     for example_id,question in enumerate(questions) :
         tic = time.time()
         
@@ -389,7 +389,7 @@ def demo_no_link(document_text,questions) :
         part_of_crops = example_index_to_crops[example_id]
         short_prelim_predictions = prelim_predict(example_id,part_of_crops,unique_id_to_result)
         short_nbest = get_nbest(short_prelim_predictions, part_of_crops,example)
-        print(short_nbest)
+        # print(short_nbest)
         ## Show results
         short_best_non_null = short_nbest[0].text
         for entry in short_nbest[1:]:
@@ -399,9 +399,10 @@ def demo_no_link(document_text,questions) :
 
         print(short_best_non_null)
         text = list(map(lambda x: x.replace('\n',''), document_text.split('\n\n')))
-        print(text)
+        # print(text)
         for i, line in enumerate(text):
             regex_line = re.sub('[^a-zA-Z0-9 ]','', line).strip()
+            print(regex_line)
             if short_best_non_null in regex_line.lower():
                 squad[question].append(line)
         squad[question].append("Finding answer time "+str(round(time.time() - tic,1))+" s")
