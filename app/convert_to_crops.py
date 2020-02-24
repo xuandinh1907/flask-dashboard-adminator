@@ -328,16 +328,17 @@ def get_document_text(url) :
 
     paragraphs = html.select("p")
     document_text = '\n'.join([ para.text for para in paragraphs])
-    return document_text,len(paragraphs)
+    tables = html.select("table")
+    document_text += '\n'.join([ str(table) for table in tables])
+    return document_text
 
 
 
 def demo(url,questions) :
     squad = collections.defaultdict(list)
-    document_text,my_length = get_document_text(url)
+    document_text = get_document_text(url)
     # print(document_text)
     doc_tokens = get_doc_tokens(document_text)
-    squad["Number of paragrahps"] = my_length
     for example_id,question in enumerate(questions) :
         tic = time.time()
         
@@ -401,9 +402,14 @@ def demo(url,questions) :
         short_best_non_null = short_nbest[0].text
         for entry in short_nbest[1:]:
             if len(entry.text) > len(short_best_non_null) and short_best_non_null in entry.text:
-                    short_best_non_null = entry.text
+                    short_best_non_null = " ".join(doc_tokens[entry.orig_doc_start:entry.orig_doc_end])
         # print(short_best_non_null)
-        squad[question].append(short_best_non_null)
+        document_text_split = document_text.split(".")
+        # print(document_text_split)
+        for sentence in document_text_split :
+            if short_best_non_null in sentence :
+                print(sentence)
+                squad[question].append(sentence.strip())
         squad[question].append("Finding answer time "+str(round(time.time() - tic,1))+" s")
     
     return squad
