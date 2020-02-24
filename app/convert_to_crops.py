@@ -328,9 +328,9 @@ def get_document_text(url) :
 
     paragraphs = html.select("p")
     document_text = '\n'.join([ para.text for para in paragraphs])
-    tables = html.select("table")
-    document_text += "/n"
-    document_text += '\n'.join([ str(table) for table in tables])
+    # tables = html.select("table")
+    # document_text += "\n"
+    # document_text += '\n'.join([ str(table) for table in tables])
     return document_text
 
 
