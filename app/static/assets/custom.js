@@ -60,7 +60,7 @@ window.addEventListener('load', function () {
             var loader = document.getElementsByClassName("loader")[0];
             loader.style.display = "block";
     
-            fetch('http://34.80.65.17/qa_link_processing', {
+            fetch('http://34.80.65.17:5000/qa_link_processing', {
                 method: 'post',
                 headers: {
                     'Content-Type': 'application/json'
