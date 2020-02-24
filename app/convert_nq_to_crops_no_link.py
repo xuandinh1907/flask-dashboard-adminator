@@ -328,7 +328,7 @@ def demo_no_link(document_text,questions) :
     squad = collections.defaultdict(list)
     # document_text = get_document_text(url)
     # print(document_text)
-    doc_tokens = get_doc_tokens(document_text)
+    doc_tokens = get_doc_tokens(document_text.strip("•"))
     for example_id,question in enumerate(questions) :
         tic = time.time()
         
