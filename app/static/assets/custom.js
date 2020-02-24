@@ -32,7 +32,7 @@ window.addEventListener('load', function () {
                 var keys = Object.keys(data);
                 for(var i=0; i<keys.length; i++){
                     var key = keys[i];
-                    answer_text += "Q : "+key +"\nA : "+data[key].toUpperCase()+"\n"
+                    answer_text += "Q : "+key +"\nA : "+data[key]+"\n"
                     +'---------------------------------------'+"\n";
                     console.log(key, data[key]);
                 }
