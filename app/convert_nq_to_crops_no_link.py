@@ -395,7 +395,7 @@ def demo_no_link(document_text,questions) :
         for entry in short_nbest[1:]:
             if len(entry.text) > len(short_best_non_null) and short_best_non_null in entry.text:
                     short_best_non_null = " ".join(doc_tokens[entry.orig_doc_start:entry.orig_doc_end])
-                    short_best_non_null = re.sub('[^a-zA-Z0-9 ]','', short_best_non_null).strip()
+                    short_best_non_null = re.sub('[^a-zA-Z0-9 ]','', short_best_non_null).strip().lower()
 
         print(short_best_non_null)
         text = list(map(lambda x: x.replace('\n',''), document_text.split('\n\n')))
