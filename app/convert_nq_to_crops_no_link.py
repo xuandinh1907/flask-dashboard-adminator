@@ -328,7 +328,8 @@ def demo_no_link(document_text,questions) :
     squad = collections.defaultdict(list)
     # document_text = get_document_text(url)
     # print(document_text)
-    doc_tokens = get_doc_tokens(document_text.strip("•"))
+    doc_tokens = get_doc_tokens()
+    print(doc_tokens)
     for example_id,question in enumerate(questions) :
         tic = time.time()
         
@@ -387,13 +388,13 @@ def demo_no_link(document_text,questions) :
         part_of_crops = example_index_to_crops[example_id]
         short_prelim_predictions = prelim_predict(example_id,part_of_crops,unique_id_to_result)
         short_nbest = get_nbest(short_prelim_predictions, part_of_crops,example)
-        # print(part_of_crops)
+        print(short_nbest)
         ## Show results
         short_best_non_null = short_nbest[0].text
         for entry in short_nbest[1:]:
             if len(entry.text) > len(short_best_non_null) and short_best_non_null in entry.text:
                     short_best_non_null = " ".join(doc_tokens[entry.orig_doc_start:entry.orig_doc_end])
-        # print(short_best_non_null)
+        print(short_best_non_null)
         document_text_split = document_text.split(".")
         # print(document_text_split)
         for sentence in document_text_split :
