@@ -327,10 +327,7 @@ def get_doc_tokens(paragraph_text):
 
 def demo_no_link(document_text,questions) :
     squad = collections.defaultdict(list)
-    # document_text = get_document_text(url)
-    # print(document_text)
     doc_tokens = get_doc_tokens(document_text)
-    # print(doc_tokens)
     for example_id,question in enumerate(questions) :
         tic = time.time()
         
@@ -341,10 +338,8 @@ def demo_no_link(document_text,questions) :
                 question_text=qa["question"],
                 doc_tokens=doc_tokens,
                 crop_start=qa["crop_start"])
-        # print(example)
         ## compute crops
         crops = convert_examples_to_crops(example, tokenizer)
-        # print(crops)
         ## build dataset
         all_input_ids = tf.stack([c.input_ids for c in crops], 0)
         all_attention_mask = tf.stack([c.attention_mask for c in crops], 0)
@@ -385,12 +380,9 @@ def demo_no_link(document_text,questions) :
         for crop in crops :
             example_index_to_crops[crop.example_id].append(crop)
         unique_id_to_result = {result.unique_id: result for result in all_results}
-        # all_predictions = collections.OrderedDict()
         part_of_crops = example_index_to_crops[example_id]
         short_prelim_predictions = prelim_predict(example_id,part_of_crops,unique_id_to_result)
         short_nbest = get_nbest(short_prelim_predictions, part_of_crops,example)
-        # print(short_nbest)
-        ## Show results
         short_best_non_null = short_nbest[0].text
         for entry in short_nbest[1:]:
             if len(entry.text) > len(short_best_non_null) and short_best_non_null in entry.text:
@@ -399,7 +391,6 @@ def demo_no_link(document_text,questions) :
 
         print(short_best_non_null)
         text = list(map(lambda x: x.replace('\n',''), document_text.split('\n\n')))
-        # print(text)
         for i, line in enumerate(text):
             
             regex_line = re.sub('[^a-zA-Z0-9 ]','', line).strip().lower()
@@ -410,7 +401,4 @@ def demo_no_link(document_text,questions) :
         squad[question].append("Finding answer time "+str(round(time.time() - tic,1))+" s")
     
     return squad
-    # print("Quesion :",question)
-    # print("Answer :",short_best_non_null)
-    # print("Finding answer time :",round(time.time() - tic,1),"s")
-    # print("-----------------------------------------------")
+    

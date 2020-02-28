@@ -147,8 +147,6 @@ def get_data_api():
     data = json.loads(request.data.decode('utf-8'))
     paragraph = data.get("para",None)
     questions = data.get("ques",None)
-    # paragraph="Do you know what is the difference between you and stars ? \nThe stars are on the sky and you are in my heart !"
-    # questions=["what is the difference between you and stars"]
     print(paragraph)
     print(questions)
     print(type(paragraph))
@@ -164,8 +162,6 @@ def get_data_link_api():
     data = json.loads(request.data.decode('utf-8'))
     link = data.get("wiki",None)
     questions = data.get("ques",None)
-    # paragraph="Do you know what is the difference between you and stars ? \nThe stars are on the sky and you are in my heart !"
-    # questions=["what is the difference between you and stars"]
     questions = questions.strip().split("\n")
     print(link)
     print(questions)
@@ -173,4 +169,3 @@ def get_data_link_api():
     print(type(questions))
     my_squad = demo(link,questions)
     return jsonify(my_squad)
-    #return jsonify(qa)

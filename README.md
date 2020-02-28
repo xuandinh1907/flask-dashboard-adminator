@@ -1,169 +1,40 @@
-# [Flask Dashboard Adminator](https://appseed.us/admin-dashboards/flask-dashboard-adminator)
+# Overview
+a Flask app related to [natural questions answering](https://github.com/xuandinh1907/natural-questions-answering)
 
-**[Open-Source Admin Dashboard](https://appseed.us/admin-dashboards/flask-dashboard-adminator)** coded in **Flask Framework** on top of **Adminator Dashboard** design. **Features**:
+There are 2 options :
+- answering by reading arbitrary text
+- answering by reading wikipedia pages
 
-- SQLite database
-- SQLAlchemy ORM
-- Session-Based authentication flow (login, register)
-- UI Kit: [Adminator Free Dashboard](https://github.com/app-generator/fork-adminator-admin-dashboard) by **ColorLib**
+# App structure
 
-<br />
+**app/helper.py** 
+contains a function to add some special tokens
 
-## Dashboard Links
+**app/convert_nq_to_crops_no_link.py**
+script to handle with arbitrary text.Model predicts best non-null short answers first.The final one is paragraph including the best
 
-- [Flask Dashboard Adminator](https://appseed.us/admin-dashboards/flask-dashboard-adminator) - the product page
-- [Flask Dashboard Adminator](https://flask-dashboard-adminator.appseed.us/login.html) - LIVE Demo
-- [Flask Dashboard Adminator](https://docs.appseed.us/admin-dashboards/flask-dashboard-adminator/) - documentation
-- [Flask Dashboard Adminator](https://www.youtube.com/watch?v=TZh91sXGAKg) - yTube presentation
+**app/convert_to_crops.py**
+script to handle with a wikipedia article.Model also predicts best non-null short answers first.The final one is sentence including the best
 
-<br />
+**app/models.py**
+script to load model
 
-## Want more? Go PRO!
+**app/views.py**
+main part to set up how data flows
 
-PRO versions include **Premium UI Kits**, Lifetime updates and **24/7 LIVE Support** (via [Discord](https://discord.gg/fZC6hup))
+**app/static/assets/custom.js**
+java script for controling data from front-end.Note that you need to change the IP to suit with your local IP.For example my local IP is 127.0.0.1:5000 and on VM is 34.80.65.17:5000
 
-| [Flask Dashboard Material PRO](https://appseed.us/admin-dashboards/flask-dashboard-material-pro) | [Flask Dashboard Dashkit PRO](https://appseed.us/admin-dashboards/flask-dashboard-dashkit-pro) | [Flask Dashboard Black PRO](https://appseed.us/admin-dashboards/flask-dashboard-black-pro) |
-| --- | --- | --- |
-| [![Flask Dashboard Material PRO](https://raw.githubusercontent.com/app-generator/static/master/products/flask-dashboard-material-pro-screen.png)](https://appseed.us/admin-dashboards/flask-dashboard-material-pro)  | [![Flask Dashboard Dashkit PRO](https://raw.githubusercontent.com/app-generator/static/master/products/flask-dashboard-dashkit-pro-screen.png)](https://appseed.us/admin-dashboards/flask-dashboard-dashkit-pro) | [![Flask Dashboard Black PRO](https://raw.githubusercontent.com/app-generator/static/master/products/flask-dashboard-black-pro-screen.png)](https://appseed.us/admin-dashboards/flask-dashboard-black-pro)
+**app/templates/pages/qa_link.html**
+related closely to app/convert_to_crops.py
 
-<br />
-<br />
+**app/templates/pages/qa.html**
+related closely to app/convert_to_crops_no_link.py
 
-![Flask Dashboard Adminator - Open-Source Flask Dashboard.](https://raw.githubusercontent.com/app-generator/static/master/products/flask-dashboard-adminator-screen.png)
+**app/templates/pages/login.html**
+it does not matter but you should create an account in the first time
 
-<br />
-
-## Build from sources
-
-```bash
-$ # Clone the sources
-$ git clone https://github.com/app-generator/flask-dashboard-adminator.git
-$ cd flask-dashboard-adminator
-$
-$ # Virtualenv modules installation (Unix based systems)
-$ virtualenv --no-site-packages env
-$ source env/bin/activate
-$
-$ # Virtualenv modules installation (Windows based systems)
-$ # virtualenv --no-site-packages env
-$ # .\env\Scripts\activate
-$ 
-$ # Install requirements
-$ pip3 install -r requirements.txt
-$
-$ # Set the FLASK_APP environment variable
-$ (Unix/Mac) export FLASK_APP=run.py
-$ (Windows) set FLASK_APP=run.py
-$ (Powershell) $env:FLASK_APP = ".\run.py"
-$
-$ # Set up the DEBUG environment
-$ # (Unix/Mac) export FLASK_ENV=development
-$ # (Windows) set FLASK_ENV=development
-$ # (Powershell) $env:FLASK_ENV = "development"
-$
-$ # Run the application
-$ # --host=0.0.0.0 - expose the app on all network interfaces (default 127.0.0.1)
-$ # --port=5000    - specify the app port (default 5000)  
-$ flask run --host=0.0.0.0 --port=5000
-$
-$ # Access the app in browser: http://127.0.0.1:5000/
-```
-
-<br />
-
-## Deployment
-
-The app is provided with a basic configuration to be executed in [Docker](https://www.docker.com/), [Gunicorn](https://gunicorn.org/), and [Waitress](https://docs.pylonsproject.org/projects/waitress/en/stable/).
-
-<br />
-
-### [Docker](https://www.docker.com/) execution
----
-
-The application can be easily executed in a docker container. The steps:
-
-> Get the code
-
-```bash
-$ git clone https://github.com/app-generator/flask-dashboard-adminator.git
-$ cd flask-dashboard-adminator
-```
-
-> Start the app in Docker
-
-```bash
-$ sudo docker-compose pull && sudo docker-compose build && sudo docker-compose up -d
-```
-
-Visit `http://localhost:5005` in your browser. The app should be up & running.
-
-<br />
-
-### [Gunicorn](https://gunicorn.org/)
----
-
-Gunicorn 'Green Unicorn' is a Python WSGI HTTP Server for UNIX.
-
-> Install using pip
-
-```bash
-$ pip install gunicorn
-```
-> Start the app using gunicorn binary
-
-```bash
-$ gunicorn --bind 0.0.0.0:8001 run:app
-Serving on http://localhost:8001
-```
-
-Visit `http://localhost:8001` in your browser. The app should be up & running.
+# Run app
+After install all requirements you can run flask by command `flask run`
 
 
-<br />
-
-### [Waitress](https://docs.pylonsproject.org/projects/waitress/en/stable/)
----
-
-Waitress (Gunicorn equivalent for Windows) is meant to be a production-quality pure-Python WSGI server with very acceptable performance. It has no dependencies except ones that live in the Python standard library.
-
-> Install using pip
-
-```bash
-$ pip install waitress
-```
-> Start the app using [waitress-serve](https://docs.pylonsproject.org/projects/waitress/en/stable/runner.html)
-
-```bash
-$ waitress-serve --port=8001 run:app
-Serving on http://localhost:8001
-```
-
-Visit `http://localhost:8001` in your browser. The app should be up & running.
-
-<br />
-
-## Support
-
-- Free support via eMail < [support @ appseed.us](https://appseed.us/support) > and **Github** issues tracker
-- 24/7 Live Support via [Discord](https://discord.gg/fZC6hup) for paid plans and commercial products.
-
-<br />
-
-## Credits & Links
-
-- [Flask Dashboard Adminator](https://appseed.us/admin-dashboards/flask-dashboard-adminator) - Product page
-- [Flask Dashboard Adminator](https://flask-dashboard-adminator.appseed.us/) - Live DEMO
-- [Flask Framework](https://www.palletsprojects.com/p/flask/) - The offcial website
-- [Flask Dashboard - Open-Source Boilerplates](https://dev.to/sm0ke/flask-dashboard-open-source-boilerplates-dkg) - A popular article published on Dev.to platform
-- [Flask Dashboard](https://admin-dashboards.com/tags/flask-dashboard) - Index provided by **Admin-Dashboards.com**
-
-<br />
-
-## License
-
-@MIT
-
-<br />
-
----
-[Flask Dashboard Adminator](https://appseed.us/admin-dashboards/flask-dashboard-adminator) provided by **AppSeed**
