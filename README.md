@@ -35,6 +35,9 @@ related closely to app/convert_to_crops_no_link.py
 it does not matter but you should create an account in the first time
 
 # Run app
-After install all requirements you can run flask by command `flask run`
+- First you need to download weights.h5 [here](https://drive.google.com/drive/folders/1ykLyUE1feX1S2Ka4YqOxgHjTSByHHHVu?usp=sharing).Then create a new folder nq_bert_uncased_68 and put file into it.
+- Secondly,you should create a new env called **google** by command `conda create --name google python=3.7`
+- Thirtdly,install all requirements by command `pip install -r requirements.txt`
+- Now you can run flask by command `python run.py`
 
 

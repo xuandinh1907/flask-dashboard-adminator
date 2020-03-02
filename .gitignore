@@ -9,3 +9,5 @@ yarn-error.log
 *.psd
 env/
 nq_bert_uncased_68
+app/.ipynb_checkpoints
+.ipynb_checkpoints
