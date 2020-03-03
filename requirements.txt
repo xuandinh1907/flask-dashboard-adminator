@@ -7,3 +7,4 @@ flask_bcrypt
 gunicorn
 transformers
 bs4
+tensorflow==2.0.1

@@ -5,6 +5,8 @@ There are 2 options :
 - answering by reading arbitrary text
 - answering by reading wikipedia pages
 
+![](app/static/assets/static/images/Wikipedia-logo-en-big.png)
+
 # App structure
 
 **app/helper.py** 
@@ -39,5 +41,10 @@ it does not matter but you should create an account in the first time
 - Secondly,you should create a new env called **google** by command `conda create --name google python=3.7`
 - Thirtdly,install all requirements by command `pip install -r requirements.txt`
 - Now you can run flask by command `python run.py`
+
+# ML Demo Day 25/02/2019
+Fortunately,I won the third prize of Demo Day thanks to this app
+
+![](app/static/assets/static/images/IMG_1019.jpg)
 
 

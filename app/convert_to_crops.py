@@ -402,8 +402,10 @@ def demo(url,questions) :
         ## Show results
         short_best_non_null = short_nbest[0].text
         for entry in short_nbest[1:]:
-            if len(entry.text) > len(short_best_non_null) and short_best_non_null in entry.text:
-                    short_best_non_null = " ".join(doc_tokens[entry.orig_doc_start:entry.orig_doc_end])
+            # print(entry.text)
+            if len(entry.text) > len(short_best_non_null) and short_best_non_null in entry.text and '.' not in entry.text:
+                    short_best_non_null = " ".join(doc_tokens[entry.orig_doc_start:entry.orig_doc_end+1])
+                    break
         # print(short_best_non_null)
         document_text_split = document_text.split(".")
         # print(document_text_split)

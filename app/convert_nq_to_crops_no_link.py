@@ -384,20 +384,33 @@ def demo_no_link(document_text,questions) :
         short_prelim_predictions = prelim_predict(example_id,part_of_crops,unique_id_to_result)
         short_nbest = get_nbest(short_prelim_predictions, part_of_crops,example)
         short_best_non_null = short_nbest[0].text
-        for entry in short_nbest[1:]:
-            if len(entry.text) > len(short_best_non_null) and short_best_non_null in entry.text:
-                    short_best_non_null = " ".join(doc_tokens[entry.orig_doc_start:entry.orig_doc_end])
-                    short_best_non_null = re.sub('[^a-zA-Z0-9 ]','', short_best_non_null).strip().lower()
-
         print(short_best_non_null)
-        text = list(map(lambda x: x.replace('\n',''), document_text.split('\n\n')))
-        for i, line in enumerate(text):
+        # for entry in short_nbest[1:]:
+        #     if len(entry.text) > len(short_best_non_null) and short_best_non_null in entry.text:
+        #             short_best_non_null = " ".join(doc_tokens[entry.orig_doc_start:entry.orig_doc_end])
+        #             short_best_non_null = re.sub('[^a-zA-Z0-9 ]','', short_best_non_null).strip().lower()
+
+        # print(short_best_non_null)
+        # text = list(map(lambda x: x.replace('\n',''), document_text.split('\n\n')))
+        # for i, line in enumerate(text):
             
-            regex_line = re.sub('[^a-zA-Z0-9 ]','', line).strip().lower()
-            if short_best_non_null in regex_line:
+        #     regex_line = re.sub('[^a-zA-Z0-9 ]','', line).strip().lower()
+        #     if short_best_non_null in regex_line:
                 
-                print(regex_line)
-                squad[question].append(line)
+        #         print(regex_line)
+        #         squad[question].append(line)
+        for entry in short_nbest[1:]:
+            # print(entry.text)
+            if len(entry.text) > len(short_best_non_null) and short_best_non_null in entry.text and '.' not in entry.text:
+                    short_best_non_null = " ".join(doc_tokens[entry.orig_doc_start:entry.orig_doc_end+1])
+                    break
+        # print(short_best_non_null)
+        document_text_split = document_text.split(".")
+        # print(document_text_split)
+        for sentence in document_text_split :
+            if short_best_non_null in sentence :
+                print(sentence)
+                squad[question].append(sentence.strip())
         squad[question].append("Finding answer time "+str(round(time.time() - tic,1))+" s")
     
     return squad
