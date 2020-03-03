@@ -5,7 +5,7 @@ There are 2 options :
 - answering by reading arbitrary text
 - answering by reading wikipedia pages
 
-![](app/static/assets/static/images/Wikipedia-logo-en-big.png)
+![](app/static/assets/static/images/tv.jpg)
 
 # App structure
 
